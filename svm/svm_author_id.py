@@ -33,7 +33,7 @@ from sklearn.metrics import accuracy_score
 import time
 
 t0 = time.time()
-clr = SVC(kernel='linear', gamma='auto')
+clr = SVC(kernel='rbf', gamma='auto')
 clr.fit(features_train,labels_train)
 print("training time:", round(time.time() - t0, 3), "sec")
 
