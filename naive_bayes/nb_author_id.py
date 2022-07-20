@@ -12,7 +12,7 @@
     
 import sys
 from time import time
-sys.path.append("../tools/")
+sys.path.append("E:\Udacity_Online_Class")
 from email_preprocess import preprocess
 
 
@@ -26,7 +26,19 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+import time
 
+t0 = time.time()
+clr = GaussianNB()
+clr.fit(features_train,labels_train)
+print("training time:", round(time.time() - t0, 3), "sec")
+
+t1 = time.time()
+preds = clr.predict(features_test)
+print("prediction time:", round(time.time() - t1,3), "sec")
+print("prediction accuracy:", accuracy_score(preds,labels_test))
 
 #########################################################
 

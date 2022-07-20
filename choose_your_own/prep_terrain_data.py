@@ -10,6 +10,7 @@ def makeTerrainData(n_points=1000):
     bumpy = [random.random() for ii in range(0,n_points)]
     error = [random.random() for ii in range(0,n_points)]
     y = [round(grade[ii]*bumpy[ii]+0.3+0.1*error[ii]) for ii in range(0,n_points)]
+
     for ii in range(0, len(y)):
         if grade[ii]>0.8 or bumpy[ii]>0.8:
             y[ii] = 1.0

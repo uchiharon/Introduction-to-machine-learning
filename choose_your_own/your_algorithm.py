@@ -31,11 +31,25 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+import time
 
+clf = KNeighborsClassifier(n_neighbors=5)
+clf.fit(features_train, labels_train)
+pred = clf.predict(features_test)
 
+print("The model accurcy is ", accuracy_score(labels_test,pred))
+print("This is the model confusion matrix:", confusion_matrix(labels_test,pred))
 
-
-
+for n in range(1,30):
+    start = time.time()
+    clf1 = KNeighborsClassifier(n_neighbors=n)
+    clf1.fit(features_train, labels_train)
+    pred = clf1.predict(features_test)
+    print("The accuracy of n_neighbors \"{}\" model accurcy is ".format(n), accuracy_score(labels_test,pred), "Its took ", time.time() - start, " to finish") 
+    
 
 
 try:
