@@ -1,4 +1,8 @@
-ud120-projects
+My solution to ud120-projects
 ==============
 
-Starter project code for students taking Udacity ud120
+This is my solution using the Starter project code for taking Udacity ud120
+
+Udacity ud120, is an introductive course to machine learning. It entails both Supervised and Unsupervised machine learning
+
+
