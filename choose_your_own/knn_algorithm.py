@@ -43,9 +43,11 @@ pred = clf.predict(features_test)
 print("The model accurcy is ", accuracy_score(labels_test,pred))
 print("This is the model confusion matrix:", confusion_matrix(labels_test,pred))
 
-for n in range(1,3):
+weights = ['uniform', 'distance']
+
+for n in weights:
     start = time.time()
-    clf1 = KNeighborsClassifier(n_neighbors=7, p=n)
+    clf1 = KNeighborsClassifier(n_neighbors=7, weights=n)
     clf1.fit(features_train, labels_train)
     pred = clf1.predict(features_test)
     print("The accuracy of p= \"{}\" model accurcy is ".format(n), accuracy_score(labels_test,pred), "Its took ", time.time() - start, " to finish") 
