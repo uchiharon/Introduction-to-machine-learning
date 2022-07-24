@@ -36,7 +36,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 import time
 
-clf = KNeighborsClassifier(n_neighbors=7, weights="distance")
+clf = KNeighborsClassifier(n_neighbors=7)
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 
