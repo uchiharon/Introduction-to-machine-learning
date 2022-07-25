@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from math import log2
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
@@ -35,27 +36,28 @@ from sklearn.ensemble import RandomForestClassifier as RFC
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score
 import time
-'''
-clf = RFC()
+
+clf = RFC(n_estimators=30, max_features='log2')
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
 
 print("The model accurcy is ", accuracy_score(labels_test,pred))
-print("This is the model confusion matrix:", confusion_matrix(labels_test,pred))'''
+print("This is the model confusion matrix:", confusion_matrix(labels_test,pred))
 
-
+'''
 accuracy = []
 number_of_estimator = []
 duration = []
 
-for n in range(10,160,10):
+for n in max_feature:
     start = time.time()
-    clf1 = RFC(n_estimators=n,random_state=42)
+    clf1 = RFC(n_estimators=30,max_features='log2',random_state=42)
     clf1.fit(features_train, labels_train)
     pred = clf1.predict(features_test)
     duration.append(time.time() - start)
     number_of_estimator.append(n)
     accuracy.append(accuracy_score(labels_test,pred))
+
     
     
 plt.xlim(0,200)
@@ -66,13 +68,12 @@ plt.xlabel("number_of_estimator")
 plt.ylabel("Grading Metrics")
 plt.show()
 print(number_of_estimator, "\n", accuracy, "\n", duration)
-
-    
+'''   
   
 
-'''
+
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
-'''
+
